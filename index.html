@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title> منصه تعليم الفقه </title>
+  <title>منصة تعليم الفقه</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="logo.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
@@ -57,26 +57,6 @@
       margin-bottom: 30px;
       color: #c99a00;
     }
-    .testimonials {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      margin-top: 40px;
-    }
-    .card {
-      background: #fff;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      font-size: 18px;
-    }
-    .card span {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-      color: #c99a00;
-    }
-
     .toggle-section {
       background: #fff;
       padding: 40px;
@@ -84,6 +64,7 @@
       box-shadow: 0 10px 40px rgba(0,0,0,0.05);
       margin: 40px auto;
       max-width: 800px;
+      text-align: right;
     }
     .btn-about {
       background: #f9c600; 
@@ -94,12 +75,18 @@
       background: #2b2b2b; 
       color: #fff;
     }
+    .btn-fiqh {
+      background: #c99a00; 
+      color: #fff;
+      margin-top: 20px;
+    }
     .content-box {
       display: none; 
       margin-top: 20px;
       padding: 20px;
       border-radius: 15px;
       animation: fadeIn 0.5s;
+      text-align: right;
     }
     .about-content {
       background: #fff9e6;
@@ -108,6 +95,10 @@
     .contact-content {
       background: #f4f4f4;
       border: 2px solid #2b2b2b;
+    }
+    .fiqh-content {
+      background: #fffbe6;
+      border: 2px solid #c99a00;
     }
 
     @keyframes fadeIn {
@@ -141,21 +132,11 @@
 
   <section>
     <div class="container">
-      <h2>آراء بعض الطلاب</h2>
-      <div class="testimonials">
-        <div class="card">"ممتاز"<span>– طالبة</span></div>
-        <div class="card">"شرح مبسط وحلو "<span>– طالب</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
       <div class="toggle-section">
         
         <button class="btn btn-about" onclick="toggleContent('about')">من نحن</button>
-        
         <button class="btn btn-contact-us" onclick="toggleContent('contact')">تواصل معنا</button>
+        <button class="btn btn-fiqh" onclick="toggleContent('fiqh')">فقه</button>
 
         <div id="about" class="content-box about-content">
           <h3>ساره عاطف</h3>
@@ -167,6 +148,17 @@
         <div id="contact" class="content-box contact-content">
           <h3>رقم الهاتف</h3>
           <p style="font-size: 24px; font-weight: bold;">01144546621</p>
+        </div>
+
+        <div id="fiqh" class="content-box fiqh-content">
+          <h3>الصلاة</h3>
+          <p>الصلاة واجبة على كل مسلم بالغ عاقل. أركانها: النية، تكبيرة الإحرام، الركوع، السجود، التشهد.</p>
+
+          <h3>الصيام</h3>
+          <p>الصيام فرض في شهر رمضان على كل بالغ عاقل مع القدرة على الصوم. يشمل الإمساك عن الطعام والشراب من الفجر إلى المغرب.</p>
+
+          <h3>الوضوء</h3>
+          <p>الوضوء واجب قبل الصلاة ويشمل غسل الوجه، اليدين، مسح الرأس، وغسل القدمين.</p>
         </div>
 
       </div>
@@ -181,7 +173,7 @@
   </section>
 
   <footer>
-    ©2026 Developed by: Anas Magdy | جميع الحقوق محفوظة
+    ©2026 Develop by : Anas magdy / جميع الحقوق محفوظه
   </footer>
 
   <script>
