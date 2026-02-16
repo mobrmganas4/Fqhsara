@@ -3,9 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>منصة تعليم الفقه</title>
+  
+  <meta name="description" content="أهلاً بكم في منصة تعليم الفقه. تعليم الفقه يجعلك تفهم دينك بشكل أعمق وتقدر تعلم أي شخص وتكسب حسنات.">
+  <meta name="keywords" content="فقه, تعليم فقه, منصه فقه, فقه صلاه, فقه صيام">
+  <meta name="author" content="Anas Magdy">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <link rel="icon" href="logo.png" type="image/png">
+  
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --primary-gold: #c99a00;
@@ -23,7 +31,7 @@
       overflow-x: hidden;
     }
 
-    /* التنقل بين الصفحات */
+    /* تأثيرات ظهور الصفحات */
     .page-content {
       display: none;
       padding: 20px;
@@ -41,7 +49,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* الهيدر الترحيبي */
+    /* هيدر ترحيبي جذاب */
     .hero-card {
       background: linear-gradient(135deg, var(--dark-bg), #000);
       padding: 60px 20px;
@@ -54,11 +62,12 @@
 
     .hero-card h1 {
       margin: 0;
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 900;
+      line-height: 1.4;
     }
 
-    /* القائمة السفلية - شكل الـ App */
+    /* بار التنقل السفلي (مثل التطبيقات) */
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -94,7 +103,7 @@
       margin-bottom: 4px;
     }
 
-    /* الصناديق */
+    /* تنسيق الكروت */
     .card {
       background: #fff;
       margin: 15px auto;
@@ -103,6 +112,7 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.06);
       max-width: 500px;
       border-right: 5px solid var(--primary-gold);
+      text-align: right;
     }
 
     .btn-action {
@@ -114,9 +124,9 @@
       border-radius: 50px;
       margin-top: 20px;
       font-weight: 800;
+      text-align: center;
       transition: 0.3s;
       border: none;
-      box-shadow: 0 4px 15px rgba(201, 154, 0, 0.3);
     }
 
     .btn-action:hover {
@@ -129,7 +139,7 @@
       font-weight: 900;
       color: var(--dark-bg);
       margin: 20px 0;
-      letter-spacing: 1px;
+      text-align: center;
     }
 
     footer {
@@ -145,40 +155,39 @@
 
   <div id="home" class="page-content active-page">
     <div class="hero-card">
-      <h1>مرحباً بك في منصتنا</h1>
-      <p style="color: #eee;">وجهتك الأولى لتعلم الفقه بوضوح</p>
+      <h1>أهلاً بكم في منصة تعليم الفقه</h1>
     </div>
     <div class="card">
-      <h3>رسالة المنصة</h3>
-      <p>نهتم بتقديم المعلومة الفقهية الصحيحة والموثقة بأسلوب عصري يسهل على الجميع فهمه وتطبيقه في حياتهم اليومية.</p>
+      <h3 style="color: var(--primary-gold);">لماذا نتعلم الفقه؟</h3>
+      <p>أولاً: تعليم الفقه يجعلك تفهم دينك بشكل أكثر وأعمق، ويؤهلك لتعليم أي شخص آخر لتنال بذلك الأجر والثواب العظيم.</p>
     </div>
   </div>
 
   <div id="fiqh" class="page-content">
-    <h2 style="color: var(--primary-gold);">المسائل الفقهية</h2>
+    <h2 style="color: var(--primary-gold);">مسائل فقهية</h2>
     <div class="card">
-      <p>لو محتاج شرح أكتر وتفاصيل دقيقة في المسائل، تقدر تنضم للحلقة المباشرة دلوقتي</p>
-      <a href="https://t.me/fachalw" class="btn-action">دخول جروب التلجرام</a>
+      <p>إذا كنت ترغب في شرح أكثر استفاضة وحضور حلقات العلم المباشرة، انضم إلينا الآن:</p>
+      <a href="https://t.me/fachalw" class="btn-action">جروب التلجرام</a>
     </div>
   </div>
 
   <div id="about" class="page-content">
     <h2 style="color: var(--primary-gold);">من نحن</h2>
     <div class="card">
-      <h3 style="margin-top:0;">ساره عاطف</h3>
+      <h3 style="margin:0;">ساره عاطف</h3>
       <p style="color: var(--primary-gold); font-weight: bold;">أستاذة فقه بالمنصة</p>
-      <hr style="opacity: 0.2;">
-      <p>مشروع تعليمي متخصص في تبسيط الفقه الإسلامي، نهدف لنشر العلم النافع بأسلوب ميسر لكل الفئات.</p>
+      <hr style="opacity: 0.1;">
+      <p>نحن منصة تعليمية متخصصة في تبسيط العلوم الشرعية والمسائل الفقهية لتكون في متناول الجميع بأسلوب ميسر.</p>
     </div>
   </div>
 
   <div id="contact" class="page-content">
     <h2 style="color: var(--primary-gold);">تواصل معنا</h2>
     <div class="card">
-      <p>للتواصل المباشر عبر الهاتف:</p>
+      <p style="text-align: center;">للتواصل والاستفسار عبر الهاتف:</p>
       <div class="contact-number">01144546621</div>
-      <p>أو انضم إلينا عبر مجتمعنا على التلجرام:</p>
-      <a href="https://t.me/fachalw" class="btn-action" style="background: #222; color: #fff;">جروب تلجرام المنصة</a>
+      <p style="text-align: center;">أو عبر مجتمعنا على التلجرام:</p>
+      <a href="https://t.me/fachalw" class="btn-action" style="background: #222; color: #fff;">جروب التلجرام الرسمي</a>
     </div>
   </div>
 
@@ -192,11 +201,11 @@
       <div>الرئيسية</div>
     </div>
     <div class="nav-item" onclick="showPage('fiqh', this)">
-      <span>📜</span>
+      <span>📖</span>
       <div>المسائل</div>
     </div>
     <div class="nav-item" onclick="showPage('about', this)">
-      <span>👤</span>
+      <span>✨</span>
       <div>من نحن</div>
     </div>
     <div class="nav-item" onclick="showPage('contact', this)">
@@ -207,23 +216,23 @@
 
   <script>
     function showPage(pageId, element) {
-      // إخفاء كل المحتوى
+      // إخفاء الصفحات
       var pages = document.getElementsByClassName('page-content');
       for (var i = 0; i < pages.length; i++) {
         pages[i].classList.remove('active-page');
       }
 
-      // إلغاء تفعيل كل الأزرار
+      // إلغاء تفعيل الأزرار
       var navItems = document.getElementsByClassName('nav-item');
       for (var i = 0; i < navItems.length; i++) {
         navItems[i].classList.remove('active');
       }
 
-      // إظهار الصفحة اللي ضغطنا عليها وتفعيل زرارها
+      // إظهار الصفحة وتفعيل زرها
       document.getElementById(pageId).classList.add('active-page');
       element.classList.add('active');
 
-      // نطلع لفوق تلقائي لما الصفحة تتغير
+      // العودة للأعلى بسلاسة
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
   </script>
