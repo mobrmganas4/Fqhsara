@@ -5,191 +5,226 @@
   <title>منصة تعليم الفقه</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="logo.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-gold: #c99a00;
+      --light-gold: #f9c600;
+      --dark-bg: #1a1a1a;
+      --soft-white: #fffdf5;
+    }
+
     body {
       margin: 0;
+      padding-bottom: 80px; 
       font-family: 'Cairo', sans-serif;
-      background: linear-gradient(180deg, #fff9e6, #fff);
+      background-color: var(--soft-white);
       color: #333;
+      overflow-x: hidden;
     }
-    section {
-      padding: 80px 20px;
+
+    /* التنقل بين الصفحات */
+    .page-content {
+      display: none;
+      padding: 20px;
+      animation: fadeIn 0.4s ease-out;
+      min-height: 80vh;
       text-align: center;
     }
-    .container {
-      max-width: 1100px;
-      margin: auto;
-    }
-    .hero {
-      background: linear-gradient(135deg, #f9c600, #ffdd55);
-      color: #2b2b2b;
-      border-bottom-left-radius: 80px;
-      border-bottom-right-radius: 80px;
-    }
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 20px;
-    }
-    .hero p {
-      font-size: 20px;
-      line-height: 1.8;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 35px;
-      background: #2b2b2b;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 50px;
-      font-size: 18px;
-      transition: 0.3s;
-      cursor: pointer;
-      border: none;
-    }
-    .btn:hover {
-      background: #000;
-      transform: translateY(-3px);
-    }
-    h2 {
-      font-size: 34px;
-      margin-bottom: 30px;
-      color: #c99a00;
-    }
-    .toggle-section {
-      background: #fff;
-      padding: 40px;
-      border-radius: 30px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-      margin: 40px auto;
-      max-width: 800px;
-      text-align: right;
-    }
-    .btn-about {
-      background: #2b2b2b; 
-      color: #fff;
-      font-weight: bold;
-    }
-    .btn-contact-us {
-      background: #2b2b2b; 
-      color: #fff;
-    }
-    .btn-fiqh {
-      background: #2b2b2b; 
-      color: #fff;
-      margin-top: 20px;
-    }
-    .content-box {
-      display: none; 
-      margin-top: 20px;
-      padding: 20px;
-      border-radius: 15px;
-      animation: fadeIn 0.5s;
-      text-align: right;
-    }
-    .about-content {
-      background: #fff9e6;
-      border: 2px solid #f9c600;
-    }
-    .contact-content {
-      background: #f4f4f4;
-      border: 2px solid #2b2b2b;
-    }
-    .fiqh-content {
-      background: #fffbe6;
-      border: 2px solid #c99a00;
+
+    .active-page {
+      display: block;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
+      from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .contact {
-      background: linear-gradient(135deg, #2b2b2b, #000);
-      color: #fff;
-      border-top-left-radius: 80px;
-      border-top-right-radius: 80px;
+    /* الهيدر الترحيبي */
+    .hero-card {
+      background: linear-gradient(135deg, var(--dark-bg), #000);
+      padding: 60px 20px;
+      border-bottom-left-radius: 60px;
+      border-bottom-right-radius: 60px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+      color: var(--light-gold);
     }
-    footer {
-      padding: 20px;
+
+    .hero-card h1 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: 900;
+    }
+
+    /* القائمة السفلية - شكل الـ App */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--dark-bg);
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0;
+      box-shadow: 0 -5px 25px rgba(0,0,0,0.3);
+      z-index: 1000;
+      border-top: 3px solid var(--primary-gold);
+    }
+
+    .nav-item {
+      color: #777;
+      text-decoration: none;
+      font-size: 13px;
       text-align: center;
-      background: #000;
-      color: #aaa;
-      font-size: 14px;
+      flex: 1;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .nav-item.active {
+      color: var(--light-gold);
+      transform: translateY(-5px);
+    }
+
+    .nav-item span {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    /* الصناديق */
+    .card {
+      background: #fff;
+      margin: 15px auto;
+      padding: 30px 20px;
+      border-radius: 25px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      max-width: 500px;
+      border-right: 5px solid var(--primary-gold);
+    }
+
+    .btn-action {
+      display: block;
+      background: var(--primary-gold);
+      color: #000;
+      text-decoration: none;
+      padding: 16px;
+      border-radius: 50px;
+      margin-top: 20px;
+      font-weight: 800;
+      transition: 0.3s;
+      border: none;
+      box-shadow: 0 4px 15px rgba(201, 154, 0, 0.3);
+    }
+
+    .btn-action:hover {
+      background: var(--dark-bg);
+      color: var(--light-gold);
+    }
+
+    .contact-number {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--dark-bg);
+      margin: 20px 0;
+      letter-spacing: 1px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #888;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
 
-  <section class="hero">
-    <div class="container">
-      <h1>مرحبًا بكم في منصة تعليم الفقه</h1>
-      <p>تعلم الفقه بأسلوب مبسط، واضح، ومناسب للجميع</p>
+  <div id="home" class="page-content active-page">
+    <div class="hero-card">
+      <h1>مرحباً بك في منصتنا</h1>
+      <p style="color: #eee;">وجهتك الأولى لتعلم الفقه بوضوح</p>
     </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="toggle-section">
-        
-        <button class="btn btn-about" onclick="toggleContent('about')">من نحن</button>
-        <button class="btn btn-contact-us" onclick="toggleContent('contact')">تواصل معنا</button>
-        <button class="btn btn-fiqh" onclick="toggleContent('fiqh')">مسائل فقهيه </button>
-
-        <div id="about" class="content-box about-content">
-          <h3>ساره عاطف</h3>
-          <p>أستاذة فقه بالمنصة</p>
-          <hr style="border: 0; height: 1px; background: #f9c600; margin: 15px 0;">
-          <p>منصة تعليمية متخصصة في شرح المسائل الفقهية بأسلوب ميسر يناسب كافة المستويات.</p>
-        </div>
-
-        <div id="contact" class="content-box contact-content">
-          <h3>رقم الهاتف</h3>
-          <p style="font-size: 24px; font-weight: bold;">01144546621</p>
-          <a class="btn" href="https://t.m/@AnasSara" style="background:#f9c600; color:#000;">حساب معلمه</a>
-        </div>
-
-        <div id="fiqh" class="content-box fiqh-content">
-      <h3> لو عاوز شرح اكثر انضم للحلقة الأن </h3>
-  
-        <a class="btn" href="https://t.me/fachalw" style="background:#f9c600; color:#000;">جروب تلجرام </a>
-          
-
-       
-        </div>
-
-      </div>
+    <div class="card">
+      <h3>رسالة المنصة</h3>
+      <p>نهتم بتقديم المعلومة الفقهية الصحيحة والموثقة بأسلوب عصري يسهل على الجميع فهمه وتطبيقه في حياتهم اليومية.</p>
     </div>
-  </section>
+  </div>
 
-  <section class="contact">
-    <div class="container">
-      <h2>التواصل عبر تلجرام </h2>
-      <a class="btn" href="https://t.me/fachalw" style="background:#f9c600; color:#000;">جروب تلجرام </a>
+  <div id="fiqh" class="page-content">
+    <h2 style="color: var(--primary-gold);">المسائل الفقهية</h2>
+    <div class="card">
+      <p>لو محتاج شرح أكتر وتفاصيل دقيقة في المسائل، تقدر تنضم للحلقة المباشرة دلوقتي</p>
+      <a href="https://t.me/fachalw" class="btn-action">دخول جروب التلجرام</a>
     </div>
-  </section>
+  </div>
+
+  <div id="about" class="page-content">
+    <h2 style="color: var(--primary-gold);">من نحن</h2>
+    <div class="card">
+      <h3 style="margin-top:0;">ساره عاطف</h3>
+      <p style="color: var(--primary-gold); font-weight: bold;">أستاذة فقه بالمنصة</p>
+      <hr style="opacity: 0.2;">
+      <p>مشروع تعليمي متخصص في تبسيط الفقه الإسلامي، نهدف لنشر العلم النافع بأسلوب ميسر لكل الفئات.</p>
+    </div>
+  </div>
+
+  <div id="contact" class="page-content">
+    <h2 style="color: var(--primary-gold);">تواصل معنا</h2>
+    <div class="card">
+      <p>للتواصل المباشر عبر الهاتف:</p>
+      <div class="contact-number">01144546621</div>
+      <p>أو انضم إلينا عبر مجتمعنا على التلجرام:</p>
+      <a href="https://t.me/fachalw" class="btn-action" style="background: #222; color: #fff;">جروب تلجرام المنصة</a>
+    </div>
+  </div>
 
   <footer>
-    ©2026 Develop by : Anas magdy / جميع الحقوق محفوظه
+    ©2026 Developed by: Anas Magdy<br>جميع الحقوق محفوظة
   </footer>
 
+  <nav class="bottom-nav">
+    <div class="nav-item active" onclick="showPage('home', this)">
+      <span>🏠</span>
+      <div>الرئيسية</div>
+    </div>
+    <div class="nav-item" onclick="showPage('fiqh', this)">
+      <span>📜</span>
+      <div>المسائل</div>
+    </div>
+    <div class="nav-item" onclick="showPage('about', this)">
+      <span>👤</span>
+      <div>من نحن</div>
+    </div>
+    <div class="nav-item" onclick="showPage('contact', this)">
+      <span>📞</span>
+      <div>تواصل</div>
+    </div>
+  </nav>
+
   <script>
-    function toggleContent(id) {
-      var contents = document.getElementsByClassName('content-box');
-      for (var i = 0; i < contents.length; i++) {
-        if (contents[i].id !== id) {
-          contents[i].style.display = 'none';
-        }
+    function showPage(pageId, element) {
+      // إخفاء كل المحتوى
+      var pages = document.getElementsByClassName('page-content');
+      for (var i = 0; i < pages.length; i++) {
+        pages[i].classList.remove('active-page');
       }
-      
-      var target = document.getElementById(id);
-      if (target.style.display === 'block') {
-        target.style.display = 'none';
-      } else {
-        target.style.display = 'block';
+
+      // إلغاء تفعيل كل الأزرار
+      var navItems = document.getElementsByClassName('nav-item');
+      for (var i = 0; i < navItems.length; i++) {
+        navItems[i].classList.remove('active');
       }
+
+      // إظهار الصفحة اللي ضغطنا عليها وتفعيل زرارها
+      document.getElementById(pageId).classList.add('active-page');
+      element.classList.add('active');
+
+      // نطلع لفوق تلقائي لما الصفحة تتغير
+      window.scrollTo({top: 0, behavior: 'smooth'});
     }
   </script>
 
