@@ -9,9 +9,7 @@
   <meta name="author" content="Anas Magdy">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
   <link rel="icon" href="logo.png" type="image/png">
-  
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
   
   <style>
@@ -20,6 +18,7 @@
       --light-gold: #f9c600;
       --dark-bg: #1a1a1a;
       --soft-white: #fffdf5;
+      --telegram-blue: #0088cc;
     }
 
     body {
@@ -31,7 +30,6 @@
       overflow-x: hidden;
     }
 
-    /* تأثيرات ظهور الصفحات */
     .page-content {
       display: none;
       padding: 20px;
@@ -40,16 +38,13 @@
       text-align: center;
     }
 
-    .active-page {
-      display: block;
-    }
+    .active-page { display: block; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* هيدر ترحيبي جذاب */
     .hero-card {
       background: linear-gradient(135deg, var(--dark-bg), #000);
       padding: 60px 20px;
@@ -60,50 +55,6 @@
       color: var(--light-gold);
     }
 
-    .hero-card h1 {
-      margin: 0;
-      font-size: 28px;
-      font-weight: 900;
-      line-height: 1.4;
-    }
-
-    /* بار التنقل السفلي (مثل التطبيقات) */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: var(--dark-bg);
-      display: flex;
-      justify-content: space-around;
-      padding: 12px 0;
-      box-shadow: 0 -5px 25px rgba(0,0,0,0.3);
-      z-index: 1000;
-      border-top: 3px solid var(--primary-gold);
-    }
-
-    .nav-item {
-      color: #777;
-      text-decoration: none;
-      font-size: 13px;
-      text-align: center;
-      flex: 1;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .nav-item.active {
-      color: var(--light-gold);
-      transform: translateY(-5px);
-    }
-
-    .nav-item span {
-      display: block;
-      font-size: 24px;
-      margin-bottom: 4px;
-    }
-
-    /* تنسيق الكروت */
     .card {
       background: #fff;
       margin: 15px auto;
@@ -113,6 +64,8 @@
       max-width: 500px;
       border-right: 5px solid var(--primary-gold);
       text-align: right;
+      position: relative;
+      overflow: hidden;
     }
 
     .btn-action {
@@ -127,28 +80,30 @@
       text-align: center;
       transition: 0.3s;
       border: none;
+      cursor: pointer;
     }
 
-    .btn-action:hover {
-      background: var(--dark-bg);
-      color: var(--light-gold);
+    .btn-ussd { background: #d9534f; color: white !important; }
+    .btn-telegram { background: var(--telegram-blue); color: white !important; }
+
+    .promo-badge {
+      background: #d9534f; color: white; position: absolute;
+      top: 15px; left: -35px; transform: rotate(-45deg);
+      padding: 5px 40px; font-size: 11px; font-weight: bold;
     }
 
-    .contact-number {
-      font-size: 28px;
-      font-weight: 900;
-      color: var(--dark-bg);
-      margin: 20px 0;
-      text-align: center;
+    .bottom-nav {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--dark-bg); display: flex;
+      justify-content: space-around; padding: 12px 0;
+      z-index: 1000; border-top: 3px solid var(--primary-gold);
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 13px;
-      color: #888;
-      margin-top: 40px;
-    }
+    .nav-item { color: #777; text-decoration: none; font-size: 13px; flex: 1; text-align: center; cursor: pointer; }
+    .nav-item.active { color: var(--light-gold); }
+    .nav-item span { display: block; font-size: 24px; margin-bottom: 4px; }
+
+    footer { text-align: center; padding: 20px; font-size: 13px; color: #888; }
   </style>
 </head>
 <body>
@@ -159,34 +114,55 @@
     </div>
     <div class="card">
       <h3 style="color: var(--primary-gold);">لماذا نتعلم الفقه؟</h3>
-      <p>أولاً: تعليم الفقه يجعلك تفهم دينك بشكل أكثر وأعمق، ويؤهلك لتعليم أي شخص آخر لتنال بذلك الأجر والثواب العظيم.</p>
+      <p>أولاً: تعليم الفقه يجعلك تفهم دينك بشكل أكثر وأعمق وتقدر تعلم أي شخص وتكسب حسنات.</p>
     </div>
   </div>
 
   <div id="fiqh" class="page-content">
-    <h2 style="color: var(--primary-gold);">مسائل فقهية</h2>
+    <h2 style="color: var(--primary-gold);">باقات الاشتراك</h2>
+    
     <div class="card">
-      <p>إذا كنت ترغب في شرح أكثر استفاضة وحضور حلقات العلم المباشرة، انضم إلينا الآن:</p>
-      <a href="https://t.me/fachalw" class="btn-action">جروب التلجرام</a>
+      <div id="badge" class="promo-badge">عرض الـ 14 يوم</div>
+      <h3 style="text-align: center;">دورة الفقه الكاملة</h3>
+      
+      <div style="text-align: center; margin: 20px 0;">
+        <span id="old-price" style="text-decoration: line-through; color: #888; font-size: 18px;">150 جنيه</span>
+        <span id="current-price" style="font-size: 35px; font-weight: 900; color: #d9534f; margin-right: 10px;">100 جنيه</span>
+      </div>
+
+      <p id="timer-text" style="text-align: center; font-weight: bold; color: #d9534f;">
+        العرض ساري لفترة محدودة!
+      </p>
+
+      <a id="ussd-link" href="tel:*9*7*01006971652*100%23" class="btn-action btn-ussd">
+        اضغط لتحويل الاشتراك (كاش)
+      </a>
+      <p style="font-size: 11px; color: #666; margin-top: 5px;">* سيفتح لوحة الاتصال، اضغط اتصال لتأكيد التحويل *</p>
+      
+      <hr style="opacity: 0.1; margin: 20px 0;">
+
+      <p style="font-size: 14px; text-align: center;">بعد التحويل، أرسل صورة الإيصال للمعلمة:</p>
+      <a href="https://t.me/+201144546621" class="btn-action btn-telegram">
+        إرسال الإيصال (تفعيل الحساب)
+      </a>
     </div>
   </div>
 
   <div id="about" class="page-content">
     <h2 style="color: var(--primary-gold);">من نحن</h2>
     <div class="card">
-      <h3 style="margin:0;">ساره عاطف</h3>
+      <h3>ساره عاطف</h3>
       <p style="color: var(--primary-gold); font-weight: bold;">أستاذة فقه بالمنصة</p>
       <hr style="opacity: 0.1;">
-      <p>نحن منصة تعليمية متخصصة في تبسيط العلوم الشرعية والمسائل الفقهية لتكون في متناول الجميع بأسلوب ميسر.</p>
+      <p>نحن منصة متخصصة في تبسيط العلوم الشرعية بأسلوب عصري وميسر للجميع.</p>
     </div>
   </div>
 
   <div id="contact" class="page-content">
     <h2 style="color: var(--primary-gold);">تواصل معنا</h2>
-    <div class="card">
-      <p style="text-align: center;">للتواصل والاستفسار عبر الهاتف:</p>
-      <div class="contact-number">01144546621</div>
-      <p style="text-align: center;">أو عبر مجتمعنا على التلجرام:</p>
+    <div class="card" style="text-align: center;">
+      <p>للاستفسارات الهاتفية:</p>
+      <div style="font-size: 26px; font-weight: 900;">01144546621</div>
       <a href="https://t.me/fachalw" class="btn-action" style="background: #222; color: #fff;">جروب التلجرام الرسمي</a>
     </div>
   </div>
@@ -196,46 +172,61 @@
   </footer>
 
   <nav class="bottom-nav">
-    <div class="nav-item active" onclick="showPage('home', this)">
-      <span>🏠</span>
-      <div>الرئيسية</div>
-    </div>
-    <div class="nav-item" onclick="showPage('fiqh', this)">
-      <span>📖</span>
-      <div>المسائل</div>
-    </div>
-    <div class="nav-item" onclick="showPage('about', this)">
-      <span>✨</span>
-      <div>من نحن</div>
-    </div>
-    <div class="nav-item" onclick="showPage('contact', this)">
-      <span>📞</span>
-      <div>تواصل</div>
-    </div>
+    <div class="nav-item active" onclick="showPage('home', this)"><span>🏠</span>الرئيسية</div>
+    <div class="nav-item" onclick="showPage('fiqh', this)"><span>💰</span>الاشتراك</div>
+    <div class="nav-item" onclick="showPage('about', this)"><span>✨</span>من نحن</div>
+    <div class="nav-item" onclick="showPage('contact', this)"><span>📞</span>تواصل</div>
   </nav>
 
   <script>
     function showPage(pageId, element) {
-      // إخفاء الصفحات
       var pages = document.getElementsByClassName('page-content');
-      for (var i = 0; i < pages.length; i++) {
-        pages[i].classList.remove('active-page');
-      }
-
-      // إلغاء تفعيل الأزرار
+      for (var i = 0; i < pages.length; i++) pages[i].classList.remove('active-page');
+      
       var navItems = document.getElementsByClassName('nav-item');
-      for (var i = 0; i < navItems.length; i++) {
-        navItems[i].classList.remove('active');
-      }
+      for (var i = 0; i < navItems.length; i++) navItems[i].classList.remove('active');
 
-      // إظهار الصفحة وتفعيل زرها
       document.getElementById(pageId).classList.add('active-page');
       element.classList.add('active');
-
-      // العودة للأعلى بسلاسة
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
-  </script>
 
+    // وظيفة حساب الوقت وتغيير السعر تلقائياً
+    function checkOfferStatus() {
+      const startDate = new Date("February 17, 2026 00:00:00");
+      const endDate = new Date(startDate.getTime() + (14 * 24 * 60 * 60 * 1000)); // إضافة 14 يوم
+      const now = new Date();
+
+      const priceEl = document.getElementById('current-price');
+      const oldPriceEl = document.getElementById('old-price');
+      const badgeEl = document.getElementById('badge');
+      const timerText = document.getElementById('timer-text');
+      const ussdLink = document.getElementById('ussd-link');
+
+      // لو لسه في ميعاد العرض
+      if (now >= startDate && now <= endDate) {
+        // حساب الأيام المتبقية للعرض
+        const diffTime = Math.abs(endDate - now);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        timerText.innerHTML = "⏰ متبقي " + diffDays + " أيام على انتهاء الخصم!";
+      } 
+      // لو الوقت خلص
+      else if (now > endDate) {
+        priceEl.innerText = "150 جنيه";
+        priceEl.style.color = "#333";
+        oldPriceEl.style.display = "none";
+        badgeEl.style.display = "none";
+        timerText.innerHTML = "⚠️ انتهى عرض الخصم الحصري";
+        ussdLink.href = "tel:*9*7*01006971652*150%23";
+        ussdLink.innerText = "اضغط لتحويل الاشتراك (150ج)";
+      }
+    }
+
+    window.onload = function() {
+      checkOfferStatus();
+      // تحديث كل ساعة للتأكد من الوقت
+      setInterval(checkOfferStatus, 3600000);
+    }
+  </script>
 </body>
 </html>
