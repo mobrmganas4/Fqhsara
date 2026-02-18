@@ -3,11 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>منصة تعليم الفقه</title>
-  
-  <meta name="description" content="أهلاً بكم في منصة تعليم الفقه. تعليم الفقه يجعلك تفهم دينك بشكل أعمق وتقدر تعلم أي شخص وتكسب حسنات.">
-  <meta name="keywords" content="فقه, تعليم فقه, منصه فقه, فقه صلاه, فقه صيام">
-  <meta name="author" content="Anas Magdy">
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="logo.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
@@ -49,7 +44,6 @@
     @media (min-width: 769px) {
       body { padding-bottom: 0; }
       .bottom-nav { display: none !important; }
-      
       .desktop-nav-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -60,7 +54,6 @@
         position: relative;
         z-index: 100;
       }
-
       .nav-card {
         background: white;
         padding: 25px;
@@ -71,14 +64,12 @@
         transition: 0.3s;
         border-bottom: 5px solid var(--primary-gold);
       }
-
       .nav-card:hover { transform: translateY(-5px); }
       .nav-card.active-desktop { background: var(--primary-gold); color: white; }
       .nav-card span { display: block; font-size: 35px; margin-bottom: 10px; }
       .card { max-width: 700px; }
     }
 
-    /* --- تنسيق الموبايل --- */
     @media (max-width: 768px) {
       .desktop-nav-grid { display: none; }
     }
@@ -102,7 +93,6 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.06);
       border-right: 5px solid var(--primary-gold);
       text-align: right;
-      position: relative;
     }
 
     .btn-action {
@@ -116,7 +106,6 @@
       font-weight: 800;
       text-align: center;
       transition: 0.3s;
-      border: none;
       cursor: pointer;
     }
 
@@ -149,24 +138,16 @@
   </div>
 
   <div class="desktop-nav-grid">
-    <div class="nav-card active-desktop" onclick="showPage('home', this)">
-      <span>🏠</span><h4>الرئيسية</h4>
-    </div>
-    <div class="nav-card" onclick="showPage('fiqh', this)">
-      <span>💰</span><h4>الاشتراك</h4>
-    </div>
-    <div class="nav-card" onclick="showPage('about', this)">
-      <span>✨</span><h4>من نحن</h4>
-    </div>
-    <div class="nav-card" onclick="showPage('contact', this)">
-      <span>📞</span><h4>تواصل معنا</h4>
-    </div>
+    <div class="nav-card active-desktop" onclick="showPage('home', this)"><span>🏠</span><h4>الرئيسية</h4></div>
+    <div class="nav-card" onclick="showPage('fiqh', this)"><span>💰</span><h4>الاشتراك</h4></div>
+    <div class="nav-card" onclick="showPage('about', this)"><span>✨</span><h4>من نحن</h4></div>
+    <div class="nav-card" onclick="showPage('contact', this)"><span>📞</span><h4>تواصل معنا</h4></div>
   </div>
 
   <div id="home" class="page-content active-page">
     <div class="card">
       <h3 style="color: var(--primary-gold);">لماذا نتعلم الفقه؟</h3>
-      <p>تعلم الفقه يجعلك تفهم دينك بشكل أعمق، ويؤهلك لتعليم الآخرين ونيل الأجر والثواب العظيم.</p>
+      <p>تعلم الفقه يجعلك تفهم دينك بشكل أعمق، ويؤهلك لتعليمه للآخرين.</p>
     </div>
   </div>
 
@@ -186,7 +167,7 @@
 
       <hr style="opacity: 0.1; margin: 20px 0;">
       
-      <a href="https://t.me/+201144546621" class="btn-action btn-telegram" onclick="playSound()">
+      <a href="https://t.me/+201144546621" class="btn-action btn-telegram" onclick="handleTelegramClick(event)">
         إرسال الإيصال (تفعيل الحساب)
       </a>
     </div>
@@ -197,7 +178,7 @@
     <div class="card">
       <h3>ساره عاطف</h3>
       <p style="color: var(--primary-gold); font-weight: bold;">أستاذة فقه بالمنصة</p>
-      <p>منصة متخصصة في تبسيط العلوم الشرعية بأسلوب عصري يناسب الجميع.</p>
+      <p>منصة متخصصة في تبسيط العلوم الشرعية بأسلوب عصري.</p>
     </div>
   </div>
 
@@ -222,27 +203,25 @@
   </nav>
 
   <script>
-    // وظيفة تشغيل الصوت
-    function playSound() {
+    function handleTelegramClick(event) {
       const audio = document.getElementById('clickSound');
       if (audio) {
         audio.currentTime = 0;
-        audio.play().catch(e => console.log("الصوت يحتاج تفاعل أو الملف غير موجود"));
+        // تشغيل الصوت
+        audio.play().catch(err => {
+          console.error("خطأ في تشغيل الصوت: تأكد من وجود ملف Logo.mp3 في نفس الفولدر");
+        });
       }
     }
 
     function showPage(pageId, element) {
       var pages = document.getElementsByClassName('page-content');
       for (var i = 0; i < pages.length; i++) pages[i].classList.remove('active-page');
-      
       var navItems = document.getElementsByClassName('nav-item');
       for (var i = 0; i < navItems.length; i++) navItems[i].classList.remove('active');
-
       var navCards = document.getElementsByClassName('nav-card');
       for (var i = 0; i < navCards.length; i++) navCards[i].classList.remove('active-desktop');
-
       document.getElementById(pageId).classList.add('active-page');
-      
       if (element.classList.contains('nav-card')) {
         element.classList.add('active-desktop');
       } else {
@@ -255,21 +234,15 @@
       const startDate = new Date("February 17, 2026 00:00:00");
       const endDate = new Date(startDate.getTime() + (14 * 24 * 60 * 60 * 1000)); 
       const now = new Date();
-      const timerText = document.getElementById('timer-text');
-      const ussdLink = document.getElementById('ussd-link');
-
       if (now >= startDate && now <= endDate) {
         const diffDays = Math.ceil((endDate - now) / (1000 * 60 * 60 * 24));
-        timerText.innerHTML = "⏰ متبقي " + diffDays + " أيام على انتهاء الخصم!";
+        document.getElementById('timer-text').innerHTML = "⏰ متبقي " + diffDays + " أيام على انتهاء الخصم!";
       } else if (now > endDate) {
         document.getElementById('current-price').innerText = "150 جنيه";
         document.getElementById('old-price').style.display = "none";
-        timerText.innerHTML = "⚠️ انتهى العرض";
-        ussdLink.href = "tel:*9*7*01006971652*150%23";
-        ussdLink.innerText = "تحويل الاشتراك (150ج)";
+        document.getElementById('timer-text').innerHTML = "⚠️ انتهى العرض";
       }
     }
-
     window.onload = checkOfferStatus;
   </script>
 </body>
