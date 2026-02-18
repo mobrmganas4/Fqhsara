@@ -203,17 +203,7 @@
   </nav>
 
   <script>
-    function handleTelegramClick(event) {
-      const audio = document.getElementById('clickSound');
-      if (audio) {
-        audio.currentTime = 0;
-        // تشغيل الصوت
-        audio.play().catch(err => {
-          console.error("خطأ في تشغيل الصوت: تأكد من وجود ملف Logo.mp3 في نفس الفولدر");
-        });
-      }
-    }
-
+  
     function showPage(pageId, element) {
       var pages = document.getElementsByClassName('page-content');
       for (var i = 0; i < pages.length; i++) pages[i].classList.remove('active-page');
