@@ -111,6 +111,7 @@
 
     .btn-ussd { background: #d9534f; color: white !important; }
     .btn-telegram { background: var(--telegram-blue); color: white !important; }
+    .btn-suggestion { background: #000 !important; color: white !important; }
 
     .bottom-nav {
       position: fixed; bottom: 0; left: 0; right: 0;
@@ -167,7 +168,7 @@
 
       <hr style="opacity: 0.1; margin: 20px 0;">
       
-      <a href="https://t.me/+201144546621" class="btn-action btn-telegram" onclick="handleTelegramClick(event)">
+      <a href="https://t.me/fachalw" class="btn-action btn-telegram">
         إرسال الإيصال (تفعيل الحساب)
       </a>
     </div>
@@ -185,9 +186,12 @@
   <div id="contact" class="page-content">
     <h2 style="color: var(--primary-gold);">تواصل معنا</h2>
     <div class="card" style="text-align: center;">
-      <p>للاستفسارات الهاتفية:</p>
-      <div style="font-size: 26px; font-weight: 900; margin-bottom: 15px;">01144546621</div>
-      <a href="https://t.me/fachalw" class="btn-action" style="background: #222; color: #fff;">جروب التلجرام الرسمي</a>
+      <p>للتواصل المباشر عبر تلجرام:</p>
+      <a href="https://t.me/+201144546621" style="text-decoration: none; color: inherit;">
+        <div style="font-size: 26px; font-weight: 900; margin-bottom: 15px; color: var(--telegram-blue);">01144546621</div>
+      </a>
+      
+      <a href="https://t.me/go_work_mobermg" class="btn-action btn-suggestion">اقتراحات المنصة</a>
     </div>
   </div>
 
@@ -203,7 +207,6 @@
   </nav>
 
   <script>
-  
     function showPage(pageId, element) {
       var pages = document.getElementsByClassName('page-content');
       for (var i = 0; i < pages.length; i++) pages[i].classList.remove('active-page');
