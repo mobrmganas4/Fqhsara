@@ -30,7 +30,6 @@
       overflow-x: hidden;
     }
 
-    /* الأقسام مخفية افتراضياً وتظهر فقط عند التفعيل */
     .page-content {
       display: none;
       padding: 20px;
@@ -39,19 +38,17 @@
       text-align: center;
     }
 
-    .active-page {
-      display: block !important;
-    }
+    .active-page { display: block !important; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* --- تنسيقات الكمبيوتر (Desktop) --- */
+    /* --- Desktop Styling --- */
     @media (min-width: 769px) {
       body { padding-bottom: 0; }
-      .bottom-nav { display: none !important; } /* إخفاء شريط الموبايل */
+      .bottom-nav { display: none !important; }
       
       .desktop-nav-grid {
         display: grid;
@@ -75,15 +72,13 @@
         border-bottom: 5px solid var(--primary-gold);
       }
 
-      .nav-card:hover { transform: translateY(-5px); background: #fefefe; }
+      .nav-card:hover { transform: translateY(-5px); }
       .nav-card.active-desktop { background: var(--primary-gold); color: white; }
       .nav-card span { display: block; font-size: 35px; margin-bottom: 10px; }
-      .nav-card h4 { margin: 0; font-size: 18px; }
-      
       .card { max-width: 700px; }
     }
 
-    /* --- تنسيقات الموبايل --- */
+    /* --- Mobile Styling --- */
     @media (max-width: 768px) {
       .desktop-nav-grid { display: none; }
     }
@@ -108,7 +103,6 @@
       border-right: 5px solid var(--primary-gold);
       text-align: right;
       position: relative;
-      overflow: hidden;
     }
 
     .btn-action {
@@ -123,6 +117,7 @@
       text-align: center;
       transition: 0.3s;
       border: none;
+      cursor: pointer;
     }
 
     .btn-ussd { background: #d9534f; color: white !important; }
@@ -143,6 +138,8 @@
   </style>
 </head>
 <body>
+
+  <audio id="clickSound" src="Logo.mp3" preload="auto"></audio>
 
   <div class="hero-card">
     <h1>منصة تعليم الفقه</h1>
@@ -180,7 +177,11 @@
         <span id="current-price" style="font-size: 35px; font-weight: 900; color: #d9534f; margin-right: 10px;">100 جنيه</span>
       </div>
       <p id="timer-text" style="text-align: center; font-weight: bold; color: #d9534f;">⏳ جاري التحقق من العرض...</p>
-      <a id="ussd-link" href="tel:*9*7*01006971652*100%23" class="btn-action btn-ussd">اضغط لتحويل الاشتراك (كاش)</a>
+      
+      <a id="ussd-link" href="tel:*9*7*01006971652*100%23" class="btn-action btn-ussd" onclick="playSound()">
+        اضغط لتحويل الاشتراك (كاش)
+      </a>
+
       <hr style="opacity: 0.1; margin: 20px 0;">
       <a href="https://t.me/+201144546621" class="btn-action btn-telegram">إرسال الإيصال (تفعيل الحساب)</a>
     </div>
@@ -216,23 +217,27 @@
   </nav>
 
   <script>
+    // وظيفة تشغيل الصوت
+    function playSound() {
+      const audio = document.getElementById('clickSound');
+      audio.currentTime = 0; // إعادة الصوت للبداية لو ضغط مرتين بسرعة
+      audio.play().catch(function(error) {
+        console.log("Audio play failed:", error);
+      });
+    }
+
     function showPage(pageId, element) {
-      // إخفاء كل الصفحات
       var pages = document.getElementsByClassName('page-content');
       for (var i = 0; i < pages.length; i++) pages[i].classList.remove('active-page');
       
-      // إزالة التحديد من أزرار الموبايل
       var navItems = document.getElementsByClassName('nav-item');
       for (var i = 0; i < navItems.length; i++) navItems[i].classList.remove('active');
 
-      // إزالة التحديد من أزرار الكمبيوتر
       var navCards = document.getElementsByClassName('nav-card');
       for (var i = 0; i < navCards.length; i++) navCards[i].classList.remove('active-desktop');
 
-      // إظهار الصفحة المطلوبة
       document.getElementById(pageId).classList.add('active-page');
       
-      // تحديد الزر المناسب (سواء موبايل أو كمبيوتر)
       if (element.classList.contains('nav-card')) {
         element.classList.add('active-desktop');
       } else {
