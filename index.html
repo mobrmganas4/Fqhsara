@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>منصة تعليم الفقه</title>
+  <title> دار القرآن</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="logo.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
@@ -134,7 +134,7 @@
   </audio>
 
   <div class="hero-card">
-    <h1>منصة تعليم الفقه</h1>
+    <h1>أكاديمية دار القرآن</h1>
     <p>أهلاً بك في رحلتك لتعلم أصول دينك</p>
   </div>
 
@@ -147,15 +147,15 @@
 
   <div id="home" class="page-content active-page">
     <div class="card">
-      <h3 style="color: var(--primary-gold);">لماذا نتعلم الفقه؟</h3>
-      <p>تعلم الفقه يجعلك تفهم دينك بشكل أعمق، ويؤهلك لتعليمه للآخرين.</p>
+      <h3 style="color: var(--primary-gold);">لماذا نتعلم في الأكاديمية؟</h3>
+      <p>تعلم العلوم الشرعية يجعلك تفهم دينك بشكل أعمق، ويؤهلك لتعليمه للآخرين بأسلوب صحيح ومنضبط.</p>
     </div>
   </div>
 
   <div id="fiqh" class="page-content">
     <h2 style="color: var(--primary-gold);">باقات الاشتراك</h2>
     <div class="card">
-      <h3 style="text-align: center;">دورة الفقه الشهرية</h3>
+      <h3 style="text-align: center;">الدورة العلمية الشهرية</h3>
       <div style="text-align: center; margin: 20px 0;">
         <span id="old-price" style="text-decoration: line-through; color: #888; font-size: 18px;">150 جنيه</span>
         <span id="current-price" style="font-size: 35px; font-weight: 900; color: #d9534f; margin-right: 10px;">100 جنيه</span>
@@ -178,8 +178,8 @@
     <h2 style="color: var(--primary-gold);">من نحن</h2>
     <div class="card">
       <h3>ساره عاطف</h3>
-      <p style="color: var(--primary-gold); font-weight: bold;">أستاذة فقه بالمنصة</p>
-      <p>منصة متخصصة في تبسيط العلوم الشرعية بأسلوب عصري.</p>
+      <p style="color: var(--primary-gold); font-weight: bold;">أستاذة بالأكاديمية</p>
+      <p>أكاديمية دار القرآن متخصصة في تبسيط العلوم الشرعية بأسلوب عصري يجمع بين الأصالة والتجديد.</p>
     </div>
   </div>
 
@@ -191,12 +191,12 @@
         <div style="font-size: 26px; font-weight: 900; margin-bottom: 15px; color: var(--telegram-blue);">01144546621</div>
       </a>
       
-      <a href="https://t.me/go_work_mobermg" class="btn-action btn-suggestion">اقتراحات المنصة</a>
+      <a href="https://t.me/go_work_mobermg" class="btn-action btn-suggestion">اقتراحات الأكاديمية</a>
     </div>
   </div>
 
   <footer>
-    ©2026 Developed by: Anas Magdy<br>جميع الحقوق محفوظة
+    ©2026 Developed by: Anas Magdy<br>جميع الحقوق محفوظة - أكاديمية دار القرآن
   </footer>
 
   <nav class="bottom-nav">
@@ -224,18 +224,32 @@
     }
 
     function checkOfferStatus() {
-      const startDate = new Date("February 17, 2026 00:00:00");
-      const endDate = new Date(startDate.getTime() + (14 * 24 * 60 * 60 * 1000)); 
+      // الخصم يبدأ من 21 فبراير 2026
+      const startDate = new Date("February 21, 2026 00:00:00");
+      // ينتهي بعد 8 أيام
+      const endDate = new Date(startDate.getTime() + (8 * 24 * 60 * 60 * 1000)); 
       const now = new Date();
-      if (now >= startDate && now <= endDate) {
-        const diffDays = Math.ceil((endDate - now) / (1000 * 60 * 60 * 24));
-        document.getElementById('timer-text').innerHTML = "⏰ متبقي " + diffDays + " أيام على انتهاء الخصم!";
-      } else if (now > endDate) {
+
+      if (now < startDate) {
+        // إذا كان الوقت الحالي قبل بدء العرض
         document.getElementById('current-price').innerText = "150 جنيه";
         document.getElementById('old-price').style.display = "none";
-        document.getElementById('timer-text').innerHTML = "⚠️ انتهى العرض";
+        document.getElementById('timer-text').innerHTML = "⏳ العرض يبدأ في 21 فبراير!";
+      } else if (now >= startDate && now <= endDate) {
+        // فترة الخصم النشطة
+        const diffTime = endDate - now;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        document.getElementById('timer-text').innerHTML = "⏰ متبقي " + diffDays + " أيام على انتهاء خصم الأكاديمية!";
+        document.getElementById('current-price').innerText = "100 جنيه";
+        document.getElementById('old-price').style.display = "inline";
+      } else {
+        // بعد انتهاء العرض
+        document.getElementById('current-price').innerText = "150 جنيه";
+        document.getElementById('old-price').style.display = "none";
+        document.getElementById('timer-text').innerHTML = "⚠️ انتهى عرض الخصم";
       }
     }
+    
     window.onload = checkOfferStatus;
   </script>
 </body>
